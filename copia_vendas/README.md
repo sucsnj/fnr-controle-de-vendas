@@ -2,9 +2,6 @@
 
 Sistema web de controle de vendas desenvolvido para gerenciar pedidos, clientes, fornecedores, produtos, vendedores e agenda de forma centralizada.
 
-> ⚠️ **Versão de demonstração** — disponível para uso até **10/07/2026**.
-
----
 
 ## 📋 Sumário
 
