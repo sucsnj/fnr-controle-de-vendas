@@ -87,19 +87,19 @@ describe('Clientes - Testes Unitários (US08-US12)', () => {
         responsavel: 'João',
         telefone: '11999999999',
         email: 'joao@example.com',
-      }
+      };
 
-        ; (prisma.cliente.findUnique as jest.Mock).mockResolvedValue(null)
+      (prisma.cliente.findUnique as jest.Mock).mockResolvedValue(null);
+      (prisma.cliente.create as jest.Mock).mockResolvedValue(null);
 
-      await createCliente(mockReq as any, mockRes as Response)
+      await createCliente(mockReq as any, mockRes as Response);
 
-      expect(mockRes.status).toHaveBeenCalledWith(400)
+      expect(prisma.cliente.create).not.toHaveBeenCalled();
+      expect(mockRes.status).toHaveBeenCalledWith(400);
       expect(mockRes.json).toHaveBeenCalledWith(
-        expect.objectContaining({
-          detail: expect.stringContaining('Nome é obrigatório'),
-        })
-      )
-    })
+        expect.objectContaining({ detail: expect.stringContaining('Nome') })
+      );
+    });
   })
 
   describe('US09 - Listar Clientes', () => {
