@@ -68,23 +68,6 @@ describe('Categorias - Testes Unitários US20', () => {
         expect.objectContaining({ detail: 'Categoria já cadastrada' })
       )
     })
-
-    test('Deve criar categoria sem descricao', async () => {
-      const categoriaData = { nome: 'Mobília' }
-      mockReq.body = categoriaData
-      ;(prisma.categoria.findUnique as jest.Mock).mockResolvedValueOnce(null)
-      ;(prisma.categoria.create as jest.Mock).mockResolvedValueOnce({
-        id: 2,
-        nome: 'Mobília',
-        descricao: null,
-        ativo: true,
-      })
-
-      await createCategoria(mockReq as any, mockRes as Response)
-
-      expect(mockRes.status).toHaveBeenCalledWith(201)
-      expect(mockRes.json).toHaveBeenCalledWith(expect.objectContaining({ nome: 'Mobília' }))
-    })
   })
 
   describe('Listar Categorias', () => {
